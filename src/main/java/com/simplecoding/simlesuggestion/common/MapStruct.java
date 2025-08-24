@@ -4,7 +4,7 @@ package com.simplecoding.simlesuggestion.common;
 import com.simplecoding.simlesuggestion.es.filedbsuggested.dto.FileDbSuggestedDto;
 import com.simplecoding.simlesuggestion.es.filedbsuggested.entity.FileDbSuggested;
 import com.simplecoding.simlesuggestion.es.search.dto.SearchDto;
-import com.simplecoding.simlesuggestion.es.search.entity.Search;
+import com.simplecoding.simlesuggestion.es.search.entity.SearchAll;
 import com.simplecoding.simlesuggestion.jpa.auth.dto.MemberDto;
 import com.simplecoding.simlesuggestion.jpa.auth.entity.Member;
 import com.simplecoding.simlesuggestion.jpa.dept.dto.DeptDto;
@@ -89,6 +89,6 @@ public interface MapStruct {
     FileDbSuggested toEntity(FileDbSuggestedDto fileDbSuggestedDto);
 
 //    TODO: 10)
-    SearchDto toDto(Search search);
-    Search toEntity(SearchDto searchDto);
+    SearchDto toDto(SearchAll search);
+    SearchAll toEntity(SearchDto searchDto);
 }

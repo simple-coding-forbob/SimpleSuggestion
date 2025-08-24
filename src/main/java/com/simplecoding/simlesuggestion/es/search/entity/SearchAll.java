@@ -1,9 +1,6 @@
 package com.simplecoding.simlesuggestion.es.search.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
@@ -12,7 +9,8 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Search {
+@ToString
+public class SearchAll {
     @Id
     private String id;
     private String type;

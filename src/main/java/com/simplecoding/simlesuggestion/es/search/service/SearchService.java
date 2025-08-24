@@ -2,15 +2,15 @@ package com.simplecoding.simlesuggestion.es.search.service;
 
 import com.simplecoding.simlesuggestion.common.MapStruct;
 import com.simplecoding.simlesuggestion.es.search.dto.SearchDto;
-import com.simplecoding.simlesuggestion.es.search.entity.Search;
+import com.simplecoding.simlesuggestion.es.search.entity.SearchAll;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.elasticsearch.client.elc.NativeQuery;
 import org.springframework.data.elasticsearch.client.elc.NativeQueryBuilder;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.SearchHits;
+import org.springframework.data.elasticsearch.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,31 +22,75 @@ public class SearchService {
     private final ElasticsearchOperations elasticsearchOperations;
     private final MapStruct mapStruct;
 
+//   1) 예제) 통합 검색하기
     public Page<SearchDto> search(String keyword, Pageable pageable) {
-        NativeQuery query = new NativeQueryBuilder()
+        Query query = new NativeQueryBuilder()
                 .withQuery(q -> q.multiMatch(m -> m
-                        .query(keyword)
                         .fields("name", "loc", "job")
+                        .query(keyword)
                 ))
                 .withPageable(pageable)  // 페이징
                 .build();
 
-//        콘텐츠 기반 추천 기능: es 에서 바로 제공
-//        NativeQuery query = new NativeQueryBuilder()
-//                .withQuery(q -> q.moreLikeThis(m -> m
-//                        .fields("name", "loc", "job")
-//                        .like(l -> l.text("홍길동"))
-//                        .minTermFreq(1)
-//                        .minDocFreq(1)
-//                ))
-//                .withPageable(pageable)
-//                .build();
-
-        SearchHits<Search> hits = elasticsearchOperations.search(query, Search.class);
+        SearchHits<SearchAll> hits = elasticsearchOperations.search(query, SearchAll.class);      // 총 개수
         List<SearchDto> content =  hits.getSearchHits().stream()
                 .map(hit -> mapStruct.toDto(hit.getContent()))
-                .collect(Collectors.toList());
+                .collect(Collectors.toList());                                              // 내용
         return new PageImpl<>(content, pageable, hits.getTotalHits());
     }
+
+//  2) 예제) match 검색: 1개짜리 검색
+    public Page<SearchDto> match(String keyword, Pageable pageable) {
+        Query query = new NativeQueryBuilder()
+                .withQuery(q -> q.match(m -> m
+                        .field("name")
+                        .query("SCOTT")
+                ))
+                .withPageable(pageable)  // 페이징
+                .build();
+
+        SearchHits<SearchAll> hits = elasticsearchOperations.search(query, SearchAll.class);      // 총 개수
+        List<SearchDto> content =  hits.getSearchHits().stream()
+                .map(hit -> mapStruct.toDto(hit.getContent()))
+                .collect(Collectors.toList());                                              // 내용
+        return new PageImpl<>(content, pageable, hits.getTotalHits());
+    }
+
+    //  3) 예제) term 검색: 1개짜리 검색
+    public Page<SearchDto> term(String keyword, Pageable pageable) {
+        Query query = new NativeQueryBuilder()
+                .withQuery(q -> q.term(m -> m
+                        .field("job.keyword")
+                        .value("MANAGER")                                                   // 정확히 일치
+                ))
+                .withPageable(pageable)  // 페이징
+                .build();
+
+        SearchHits<SearchAll> hits = elasticsearchOperations.search(query, SearchAll.class);      // 총 개수
+        List<SearchDto> content =  hits.getSearchHits().stream()
+                .map(hit -> mapStruct.toDto(hit.getContent()))
+                .collect(Collectors.toList());                                              // 내용
+        return new PageImpl<>(content, pageable, hits.getTotalHits());
+    }
+
+    //  4) 예제) range 검색: 1개짜리 검색
+//    public Page<SearchDto> range(String keyword, Pageable pageable) {
+//        Query query = new NativeQueryBuilder()
+//                .withQuery(q -> q.range(m -> m
+//                        .date(r->r
+//                                .field("hiredate")
+//                                .gte("2018-01-01")
+//                                .lte("2018-01-02")
+//                        )
+//                ))
+//                .withPageable(pageable)  // 페이징
+//                .build();
+//
+//        SearchHits<Search> hits = elasticsearchOperations.search(query, Search.class);      // 총 개수
+//        List<SearchDto> content =  hits.getSearchHits().stream()
+//                .map(hit -> mapStruct.toDto(hit.getContent()))
+//                .collect(Collectors.toList());                                              // 내용
+//        return new PageImpl<>(content, pageable, hits.getTotalHits());
+//    }
 }
 
