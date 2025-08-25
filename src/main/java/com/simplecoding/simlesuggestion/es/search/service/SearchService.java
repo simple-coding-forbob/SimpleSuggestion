@@ -44,7 +44,7 @@ public class SearchService {
         Query query = new NativeQueryBuilder()
                 .withQuery(q -> q.match(m -> m
                         .field("name")
-                        .query("SCOTT")
+                        .query(keyword)
                 ))
                 .withPageable(pageable)  // 페이징
                 .build();
@@ -61,7 +61,7 @@ public class SearchService {
         Query query = new NativeQueryBuilder()
                 .withQuery(q -> q.term(m -> m
                         .field("job.keyword")
-                        .value("MANAGER")                                                   // 정확히 일치
+                        .value(keyword)                                                   // 정확히 일치
                 ))
                 .withPageable(pageable)  // 페이징
                 .build();

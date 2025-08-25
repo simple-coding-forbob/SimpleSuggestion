@@ -24,4 +24,22 @@ class SearchServiceTest {
         Page<SearchDto> page= searchService.search(totalKeyword, pageable);
         log.info(page.getContent());
     }
+
+    @Test
+    void match() {
+        Pageable pageable= PageRequest.of(0, 3);
+        String totalKeyword="scott";
+
+        Page<SearchDto> page= searchService.search(totalKeyword, pageable);
+        log.info(page.getContent());
+    }
+
+    @Test
+    void term() {
+        Pageable pageable= PageRequest.of(0, 3);
+        String totalKeyword="manager";
+
+        Page<SearchDto> page= searchService.search(totalKeyword, pageable);
+        log.info(page.getContent());
+    }
 }
