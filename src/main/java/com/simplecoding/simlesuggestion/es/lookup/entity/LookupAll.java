@@ -1,4 +1,4 @@
-package com.simplecoding.simlesuggestion.es.search2.entity;
+package com.simplecoding.simlesuggestion.es.lookup.entity;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
@@ -14,7 +14,8 @@ public class LookupAll {
     @Id
     private String id;
     private String type;
-    private String name;      // 통합필드
-    private String loc;
-    private String job;
+    private String title;
+    private String content;
+    private String question;
+    private String answer;
 }

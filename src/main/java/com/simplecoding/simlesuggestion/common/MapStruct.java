@@ -3,7 +3,9 @@ package com.simplecoding.simlesuggestion.common;
 
 import com.simplecoding.simlesuggestion.es.filedbsuggested.dto.FileDbSuggestedDto;
 import com.simplecoding.simlesuggestion.es.filedbsuggested.entity.FileDbSuggested;
-import com.simplecoding.simlesuggestion.es.search.dto.SearchDto;
+import com.simplecoding.simlesuggestion.es.lookup.dto.LookupAllDto;
+import com.simplecoding.simlesuggestion.es.lookup.entity.LookupAll;
+import com.simplecoding.simlesuggestion.es.search.dto.SearchAllDto;
 import com.simplecoding.simlesuggestion.es.search.entity.SearchAll;
 import com.simplecoding.simlesuggestion.jpa.auth.dto.MemberDto;
 import com.simplecoding.simlesuggestion.jpa.auth.entity.Member;
@@ -88,7 +90,12 @@ public interface MapStruct {
     FileDbSuggestedDto toDto(FileDbSuggested fileDbSuggested);
     FileDbSuggested toEntity(FileDbSuggestedDto fileDbSuggestedDto);
 
-//    TODO: 10)
-    SearchDto toDto(SearchAll search);
-    SearchAll toEntity(SearchDto searchDto);
+//    TODO: 엘라스틱서치 용
+//    TODO: 10) SearchAll <-> SearchAllDto
+    SearchAllDto toDto(SearchAll search);
+    SearchAll toEntity(SearchAllDto searchDto);
+
+//    TODO: 11) SearchAll <-> SearchAllDto
+    LookupAllDto toDto(LookupAll lookupAll);
+    LookupAll toEntity(LookupAllDto lookupAllDto);
 }

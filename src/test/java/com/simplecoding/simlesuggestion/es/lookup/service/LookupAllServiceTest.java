@@ -1,6 +1,9 @@
-package com.simplecoding.simlesuggestion.es.search.service;
+package com.simplecoding.simlesuggestion.es.lookup.service;
 
+import com.simplecoding.simlesuggestion.es.lookup.dto.LookupAllDto;
+import com.simplecoding.simlesuggestion.es.lookup.entity.LookupAll;
 import com.simplecoding.simlesuggestion.es.search.dto.SearchAllDto;
+import com.simplecoding.simlesuggestion.es.search.service.SearchAllService;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,19 +12,21 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 @Log4j2
 @SpringBootTest
-class SearchServiceTest {
+class LookupAllServiceTest {
 
     @Autowired
-    SearchAllService searchService;
+    LookupAllService lookupAllService;
 
     @Test
     void search() {
         Pageable pageable= PageRequest.of(0, 3);
-        String totalKeyword="scott";
+        String totalKeyword="제목";
 
-        Page<SearchAllDto> page= searchService.search(totalKeyword, pageable);
+        Page<LookupAllDto> page= lookupAllService.search(totalKeyword, pageable);
         log.info(page.getContent());
     }
 
@@ -30,7 +35,7 @@ class SearchServiceTest {
         Pageable pageable= PageRequest.of(0, 3);
         String totalKeyword="scott";
 
-        Page<SearchAllDto> page= searchService.search(totalKeyword, pageable);
+        Page<LookupAllDto> page= lookupAllService.search(totalKeyword, pageable);
         log.info(page.getContent());
     }
 
@@ -39,7 +44,7 @@ class SearchServiceTest {
         Pageable pageable= PageRequest.of(0, 3);
         String totalKeyword="manager";
 
-        Page<SearchAllDto> page= searchService.search(totalKeyword, pageable);
+        Page<LookupAllDto> page= lookupAllService.search(totalKeyword, pageable);
         log.info(page.getContent());
     }
 }
