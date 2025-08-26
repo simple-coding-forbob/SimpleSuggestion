@@ -12,9 +12,10 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @ToString
 public class SearchAll {
     @Id
-    private String id;
-    private String type;
-    private String name;
+    private String id;     // 문서 id
+    private String type;   // emp / dept 구분
+    private String dname;
     private String loc;
-    private String job;
+    private String ename;
+    private String job;    // emp 전용
 }
