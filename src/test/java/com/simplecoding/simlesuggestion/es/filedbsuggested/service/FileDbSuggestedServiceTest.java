@@ -20,7 +20,7 @@ class FileDbSuggestedServiceTest {
     @BeforeEach
     void setUp() {
         // 가짜 유저 생성
-        Member member = new Member("forbob@naver.com", "123456", "forbob", "ROLE_USER");
+        Member member = new Member("forbob@naver.com", "123456", "forbob", "ROLE_ADMIN");
 
         // 인증 토큰 만들기
         UsernamePasswordAuthenticationToken auth =

@@ -89,10 +89,23 @@ INSERT INTO TB_GALLERY(UUID, GALLERY_TITLE, GALLERY_DATA, GALLERY_FILE_URL, INSE
 VALUES (12345674, '제목4',NULL, 'https://placehold.co/600x400', SYSDATE);
 
 -- admin user 1명 최초 생성
--- id : forbob
--- password : 123456
 -- email : forbob@naver.com
+-- password : 123456
 -- roles : ROLE_ADMIN
+
+-- email : forbob2@naver.com
+-- password : 123456
+-- roles : ROLE_USER
 INSERT INTO TB_MEMBER VALUES('forbob@naver.com','$2a$10$TG1a5ywSrGNgf7/fFH.m0.EdTzHax8AGYNeAr8aIseF3DKyO0lDti','forbob','ROLE_ADMIN', SYSDATE, NULL);
+INSERT INTO TB_MEMBER VALUES('forbob2@naver.com','$2a$10$TG1a5ywSrGNgf7/fFH.m0.EdTzHax8AGYNeAr8aIseF3DKyO0lDti','forbob2','ROLE_USER', SYSDATE, NULL);
+
+-- 좋아요 샘플 데이터: forbob@naver.com
+INSERT INTO TB_FILE_DB_LIKES VALUES(SQ_FILE_DB_LIKES.nextval, 'forbob@naver.com', '12345671',1,SYSDATE, null);
+INSERT INTO TB_FILE_DB_LIKES VALUES(SQ_FILE_DB_LIKES.nextval, 'forbob2@naver.com', '12345671',1,SYSDATE, null);
+INSERT INTO TB_FILE_DB_LIKES VALUES(SQ_FILE_DB_LIKES.nextval, 'forbob2@naver.com', '12345672',1,SYSDATE, null);
+
+INSERT INTO TB_GALLERY_LIKES VALUES(SQ_GALLERY_LIKES.nextval, 'forbob@naver.com', '12345671',1,SYSDATE, null);
+INSERT INTO TB_GALLERY_LIKES VALUES(SQ_GALLERY_LIKES.nextval, 'forbob2@naver.com', '12345671',1,SYSDATE, null);
+INSERT INTO TB_GALLERY_LIKES VALUES(SQ_GALLERY_LIKES.nextval, 'forbob2@naver.com', '12345673',1,SYSDATE, null);
 
 COMMIT;
