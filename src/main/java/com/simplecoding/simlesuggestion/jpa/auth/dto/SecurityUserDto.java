@@ -11,7 +11,6 @@ import java.util.Collection;
 @Setter
 public class SecurityUserDto extends User  {
 
-
     public SecurityUserDto(String email, String password, Collection<? extends GrantedAuthority> authorities) {
         super(email, password, authorities);
     }
