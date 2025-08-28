@@ -21,10 +21,10 @@ class GallerySuggestedServiceTest {
     void setUp() {
         // 가짜 유저 생성
         Member member = new Member("forbob@naver.com", "123456", "forbob", "ROLE_USER");
-        // 인증 토큰 만들기
+        // 로그인 필터 수동 검증
         UsernamePasswordAuthenticationToken auth =
                 new UsernamePasswordAuthenticationToken(member, member.getPassword());
-        // SecurityContextHolder에 저장함: 로그인된 유저는 여기에 넣어둠, 여기에 있으면 로그인된 것으로 인식하고 인증 에러 안남
+        // 검증된 객체 SecurityContextHolder에 넣기: 로그인 된 상태가 됨(인증 에러 없음)
         SecurityContextHolder.getContext().setAuthentication(auth);
     }
 
