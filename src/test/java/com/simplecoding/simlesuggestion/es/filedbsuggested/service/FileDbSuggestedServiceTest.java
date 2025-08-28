@@ -22,11 +22,11 @@ class FileDbSuggestedServiceTest {
         // 가짜 유저 생성
         Member member = new Member("forbob@naver.com", "123456", "forbob", "ROLE_ADMIN");
 
-        // 인증 토큰 만들기
+        // 로그인 필터 수동 검증
         UsernamePasswordAuthenticationToken auth =
                 new UsernamePasswordAuthenticationToken(member, member.getPassword());
 
-        // SecurityContextHolder에 주입
+        // 검증된 객체 SecurityContextHolder에 넣기: 로그인 된 상태가 됨(인증 에러 없음)
         SecurityContextHolder.getContext().setAuthentication(auth);
     }
 
