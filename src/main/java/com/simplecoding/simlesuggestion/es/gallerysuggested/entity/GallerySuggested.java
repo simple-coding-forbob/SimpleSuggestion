@@ -1,23 +1,22 @@
-package com.simplecoding.simlesuggestion.es.filedbsuggested.entity;
+package com.simplecoding.simlesuggestion.es.gallerysuggested.entity;
 
-import lombok.*;
 import org.springframework.data.annotation.Id;
+import lombok.*;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
-@Document(indexName = "filedb-likes-suggested")
+@Document(indexName = "gallery-likes-suggested")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode(of = "email")
-public class FileDbSuggested  {
-    @Id                                        // TODO: _id 와 연결
+public class GallerySuggested {
+    @Id
     private String email;
-    private List<String> suggested;
+    private String suggested;
     private LocalDateTime insertTime;
     private LocalDateTime updateTime;
 }

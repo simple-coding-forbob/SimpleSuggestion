@@ -73,24 +73,5 @@ public class SearchAllService {
         return new PageImpl<>(content, pageable, hits.getTotalHits());
     }
 
-    //  4) 예제) range 검색: 1개짜리 검색
-//    public Page<SearchDto> range(String keyword, Pageable pageable) {
-//        Query query = new NativeQueryBuilder()
-//                .withQuery(q -> q.range(m -> m
-//                        .date(r->r
-//                                .field("hiredate")
-//                                .gte("2018-01-01")
-//                                .lte("2018-01-02")
-//                        )
-//                ))
-//                .withPageable(pageable)  // 페이징
-//                .build();
-//
-//        SearchHits<Search> hits = elasticsearchOperations.search(query, Search.class);      // 총 개수
-//        List<SearchDto> content =  hits.getSearchHits().stream()
-//                .map(hit -> mapStruct.toDto(hit.getContent()))
-//                .collect(Collectors.toList());                                              // 내용
-//        return new PageImpl<>(content, pageable, hits.getTotalHits());
-//    }
 }
 

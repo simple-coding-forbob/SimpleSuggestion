@@ -23,7 +23,12 @@
             <ul class="list-group">
               <c:forEach var="data" items="${searches}">
                   <li class="list-group-item active" aria-current="true"><c:out value="${data.type}"></c:out></li>
-                  <li class="list-group-item"><c:out value="${data.name}"></c:out></li>
+                  <c:if test="${not empty data.dname}">
+                    <li class="list-group-item"><c:out value="${data.dname}"></c:out></li>
+                  </c:if>
+                  <c:if test="${not empty data.ename}">
+                    <li class="list-group-item"><c:out value="${data.ename}"></c:out></li>
+                  </c:if>
                   <c:if test="${not empty data.loc}">
                     <li class="list-group-item"><c:out value="${data.loc}"></c:out></li>
                   </c:if>

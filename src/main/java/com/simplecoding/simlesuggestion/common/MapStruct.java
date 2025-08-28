@@ -3,6 +3,8 @@ package com.simplecoding.simlesuggestion.common;
 
 import com.simplecoding.simlesuggestion.es.filedbsuggested.dto.FileDbSuggestedDto;
 import com.simplecoding.simlesuggestion.es.filedbsuggested.entity.FileDbSuggested;
+import com.simplecoding.simlesuggestion.es.gallerysuggested.dto.GallerySuggestedDto;
+import com.simplecoding.simlesuggestion.es.gallerysuggested.entity.GallerySuggested;
 import com.simplecoding.simlesuggestion.es.lookup.dto.LookupAllDto;
 import com.simplecoding.simlesuggestion.es.lookup.entity.LookupAll;
 import com.simplecoding.simlesuggestion.es.search.dto.SearchAllDto;
@@ -86,16 +88,19 @@ public interface MapStruct {
     @Mapping(source = "uuid", target = "gallery.uuid")
     GalleryLikes toEntity(GalleryLikesDto galleryLikesDto);
 
-//    TODO: 9) FileDbSuggested <-> FileDbSuggestedDto
-    FileDbSuggestedDto toDto(FileDbSuggested fileDbSuggested);
-    FileDbSuggested toEntity(FileDbSuggestedDto fileDbSuggestedDto);
-
 //    TODO: 엘라스틱서치 용
-//    TODO: 10) SearchAll <-> SearchAllDto
+//    TODO: 9) SearchAll <-> SearchAllDto
     SearchAllDto toDto(SearchAll search);
     SearchAll toEntity(SearchAllDto searchDto);
 
-//    TODO: 11) SearchAll <-> SearchAllDto
+//    TODO: 10) SearchAll <-> SearchAllDto
     LookupAllDto toDto(LookupAll lookupAll);
     LookupAll toEntity(LookupAllDto lookupAllDto);
+
+    //    TODO: 11) FileDbSuggested <-> FileDbSuggestedDto
+    FileDbSuggestedDto toDto(FileDbSuggested fileDbSuggested);
+    FileDbSuggested toEntity(FileDbSuggestedDto fileDbSuggestedDto);
+
+    GallerySuggestedDto toDto(GallerySuggested gallerySuggested);
+    GallerySuggested toEntity(GallerySuggestedDto gallerySuggestedDto);
 }
