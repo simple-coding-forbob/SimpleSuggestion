@@ -25,6 +25,7 @@ public class FileDbSuggestedController {
         GallerySuggestedDto gallerySuggestedDto= gallerySuggestedService.findById();
         //		서비스의 상세조회
         model.addAttribute("fileDbSuggested", fileDbSuggestedDto);
+//        TODO: 퀴즈 : gallerySuggested
         model.addAttribute("gallerySuggested", gallerySuggestedDto);
         return "mypage";
     }
