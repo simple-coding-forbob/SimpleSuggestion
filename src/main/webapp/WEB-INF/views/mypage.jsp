@@ -24,6 +24,12 @@
         입니다.
     </c:if>
 
+    <c:if test="${not empty gallerySuggested}">
+        추천 갤러리 이미지는 <br>
+        <c:out value='${gallerySuggested.suggested}' /> <br>
+        입니다.
+    </c:if>
+
 </div>
 <!-- 꼬리말 -->
 <!-- jquery -->
