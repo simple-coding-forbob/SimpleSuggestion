@@ -19,7 +19,7 @@ class SearchServiceTest {
     @Test
     void search() {
         Pageable pageable= PageRequest.of(0, 3);
-        String totalKeyword="scott";
+        String totalKeyword="Scott";
 
         Page<SearchAllDto> page= searchService.search(totalKeyword, pageable);
         log.info(page.getContent());
@@ -28,18 +28,18 @@ class SearchServiceTest {
     @Test
     void match() {
         Pageable pageable= PageRequest.of(0, 3);
-        String totalKeyword="scott";
+        String totalKeyword="sales";
 
-        Page<SearchAllDto> page= searchService.search(totalKeyword, pageable);
+        Page<SearchAllDto> page= searchService.match(totalKeyword, pageable);
         log.info(page.getContent());
     }
 
     @Test
     void term() {
         Pageable pageable= PageRequest.of(0, 3);
-        String totalKeyword="manager";
+        String totalKeyword="MANAGER";
 
-        Page<SearchAllDto> page= searchService.search(totalKeyword, pageable);
+        Page<SearchAllDto> page= searchService.term(totalKeyword, pageable);
         log.info(page.getContent());
     }
 }

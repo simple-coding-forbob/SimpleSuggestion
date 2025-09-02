@@ -1,6 +1,7 @@
 TRUNCATE TABLE TB_EMP;
 TRUNCATE TABLE TB_DEPT;
 TRUNCATE TABLE TB_FAQ;
+TRUNCATE TABLE TB_QNA;
 TRUNCATE TABLE TB_FILE_DB;
 TRUNCATE TABLE TB_GALLERY;
 TRUNCATE TABLE TB_MEMBER;
@@ -66,6 +67,15 @@ INSERT INTO TB_FAQ
 VALUES (SQ_FAQ.nextval, '제목3', '해결방법3', SYSDATE ,NULL);
 INSERT INTO TB_FAQ
 VALUES (SQ_FAQ.nextval, '제목4', '해결방법4', SYSDATE ,NULL);
+
+INSERT INTO TB_QNA
+VALUES (SQ_QNA.nextval, '홍길동', '서비스 신청 방법이 궁금합니다.', '홈페이지에서 신청 가능합니다.','관리자',SYSDATE ,NULL);
+INSERT INTO TB_QNA
+VALUES (SQ_QNA.nextval, '장길산', '비밀번호를 잊어버렸어요.', '비밀번호 재설정 페이지를 이용하세요.','관리자',SYSDATE ,NULL);
+INSERT INTO TB_QNA
+VALUES (SQ_QNA.nextval, '임꺽정', '문의 답변은 얼마나 걸리나요?', NULL,'관리자',SYSDATE ,NULL);
+INSERT INTO TB_QNA
+VALUES (SQ_QNA.nextval, '전우치', '이벤트 참여 조건이 어떻게 되나요?', '회원 가입 후 첫 구매 시 자동 참여됩니다.','관리자',SYSDATE ,NULL);
 
 INSERT INTO TB_FILE_DB(UUID, FILE_TITLE, FILE_CONTENT, FILE_DATA, FILE_URL, INSERT_TIME)
 VALUES (12345671, '제목1', '내용1',NULL, 'https://placehold.co/600x400', SYSDATE);

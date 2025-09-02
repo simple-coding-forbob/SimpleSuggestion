@@ -65,14 +65,26 @@
       <!-- 메뉴(오른쪽) -->
       <ul class="navbar-nav">
         <li>
+          <!-- 통합검색: 퀴즈  -->
+          <form id="lookupForm" name="lookupForm"  class="d-flex mr2" action="/lookup" method="get">
+            <div class="input-group mb-3">
+              <input type="text"
+                     class="form-control"
+                     id="totalKeyword"
+                     name="totalKeyword"
+                     placeholder="FAQ/QNA 통합검색">
+              <button type="submit" class="btn btn-success">검색</button>
+            </div>
+          </form>
+        </li>
+        <li>
          <!-- 통합검색  -->
-          <form id="searchForm" name="searchForm"  class="d-flex" role="search" action="/search" method="get">
+          <form id="searchForm" name="searchForm"  class="d-flex" action="/search" method="get">
             <div class="input-group mb-3">
               <input type="text"
                     class="form-control"
                     id="totalKeyword"
                     name="totalKeyword"
-                    value="${param.totalKeyword}"
                     placeholder="부서/사원 통합검색">
               <button type="submit" class="btn btn-success">검색</button>
             </div>

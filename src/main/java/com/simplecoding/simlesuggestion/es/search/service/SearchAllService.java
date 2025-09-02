@@ -34,7 +34,7 @@ public class SearchAllService {
 
         SearchHits<SearchAll> hits = elasticsearchOperations.search(query, SearchAll.class);      // 총 개수
         List<SearchAllDto> content =  hits.getSearchHits().stream()
-                .map(hit -> mapStruct.toDto(hit.getContent()))
+                .map(h -> mapStruct.toDto(h.getContent()))
                 .collect(Collectors.toList());                                              // 내용
         return new PageImpl<>(content, pageable, hits.getTotalHits());
     }
@@ -43,7 +43,7 @@ public class SearchAllService {
     public Page<SearchAllDto> match(String keyword, Pageable pageable) {
         Query query = new NativeQueryBuilder()
                 .withQuery(q -> q.match(m -> m
-                        .field("name")
+                        .field("dname")
                         .query(keyword)
                 ))
                 .withPageable(pageable)  // 페이징
