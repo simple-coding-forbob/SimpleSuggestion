@@ -28,12 +28,12 @@ public class GalleryLikes extends BaseTimeEntity {
     private Long likeCount; // 좋아요 수
 
     // 단방향 조인 (GalleryLikes -> Member)
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "email")          // DB FK 컬럼명 작성
     private Member member;               // 부모 엔티티 클래스명
 
     // 단방향 조인 (GalleryLikes -> Gallery)
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "uuid")           // DB FK 컬럼명 작성
     private Gallery gallery;               // 부모 엔티티 클래스명
 }

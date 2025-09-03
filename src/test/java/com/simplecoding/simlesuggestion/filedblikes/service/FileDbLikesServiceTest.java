@@ -18,7 +18,7 @@ class FileDbLikesServiceTest {
     void save() {
         FileDbLikesDto fileDbLikesDto=new FileDbLikesDto();
         fileDbLikesDto.setEmail("forbob@naver.com");
-        fileDbLikesDto.setUuid("12345671");
+        fileDbLikesDto.setUuid("12345673");
         fileDbLikesDto.setLikeCount((long)1);
 
         fileDbLikesService.save(fileDbLikesDto);
