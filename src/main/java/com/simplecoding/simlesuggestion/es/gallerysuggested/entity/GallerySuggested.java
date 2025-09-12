@@ -5,6 +5,7 @@ import lombok.*;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Document(indexName = "gallery-likes-suggested")
 @Getter
@@ -16,7 +17,7 @@ import java.time.LocalDateTime;
 public class GallerySuggested {
     @Id
     private String email;
-    private String suggested;
+    private List<String> suggested;
     private LocalDateTime insertTime;
     private LocalDateTime updateTime;
 }

@@ -3,6 +3,7 @@ package com.simplecoding.simlesuggestion.es.gallerysuggested.dto;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 @ToString
 public class GallerySuggestedDto {
     private String email;
-    private String suggested;
+    private List<String> suggested;
     private LocalDateTime insertTime;
     private LocalDateTime updateTime;
 }
