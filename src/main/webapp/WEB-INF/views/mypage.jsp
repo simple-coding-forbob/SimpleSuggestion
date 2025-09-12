@@ -20,13 +20,19 @@
     <sec:authentication property="name"/> 님
     <c:if test="${not empty fileDbSuggested}">
         추천 이미지는 <br>
-        <c:out value='${fileDbSuggested.suggested}' /> <br>
+        <c:forEach var="data" items="${fileDbSuggested.suggested}">
+            <c:out value='${data}' /> &nbsp;
+        </c:forEach>
+        <br>
         입니다.
     </c:if>
 
     <c:if test="${not empty gallerySuggested}">
         추천 갤러리 이미지는 <br>
-        <c:out value='${gallerySuggested.suggested}' /> <br>
+        <c:forEach var="data" items="${gallerySuggested.suggested}">
+            <c:out value='${data}' /> &nbsp;
+        </c:forEach>
+        <br>
         입니다.
     </c:if>
 
