@@ -11,6 +11,7 @@ import org.springframework.data.elasticsearch.client.elc.NativeQueryBuilder;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.SearchHits;
 import org.springframework.data.elasticsearch.core.query.Query;
+import org.springframework.data.elasticsearch.core.query.StringQuery;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,6 +36,29 @@ public class SearchAllService {
         SearchHits<SearchAll> hits = elasticsearchOperations.search(query, SearchAll.class);      // 총 개수
         List<SearchAllDto> content =  hits.getSearchHits().stream()
                 .map(h -> mapStruct.toDto(h.getContent()))
+                .collect(Collectors.toList());                                              // 내용
+        return new PageImpl<>(content, pageable, hits.getTotalHits());
+    }
+
+
+    public Page<SearchAllDto> searchBooks(String keyword,  Pageable pageable) {
+
+        String templateQuery = """
+        {
+          "id": "book_unified_search",
+          "params": {
+            "q": "%s",
+            "from": %d,
+            "size": %d
+          }
+        }
+        """.formatted(keyword, pageable.getOffset(), pageable.getPageSize());
+
+        StringQuery query = new StringQuery(templateQuery);
+
+        SearchHits<SearchAll> hits = elasticsearchOperations.search(query, SearchAll.class);      // 총 개수
+        List<SearchAllDto> content =  hits.getSearchHits().stream()
+                .map(hit -> mapStruct.toDto(hit.getContent()))
                 .collect(Collectors.toList());                                              // 내용
         return new PageImpl<>(content, pageable, hits.getTotalHits());
     }
