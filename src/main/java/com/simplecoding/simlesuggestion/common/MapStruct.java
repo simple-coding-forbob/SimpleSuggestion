@@ -9,6 +9,8 @@ import com.simplecoding.simlesuggestion.es.lookup.dto.LookupAllDto;
 import com.simplecoding.simlesuggestion.es.lookup.entity.LookupAll;
 import com.simplecoding.simlesuggestion.es.search.dto.SearchAllDto;
 import com.simplecoding.simlesuggestion.es.search.entity.SearchAll;
+import com.simplecoding.simlesuggestion.es.searchBooks.dto.SearchAllBooksDto;
+import com.simplecoding.simlesuggestion.es.searchBooks.entity.SearchAllBooks;
 import com.simplecoding.simlesuggestion.jpa.auth.dto.MemberDto;
 import com.simplecoding.simlesuggestion.jpa.auth.entity.Member;
 import com.simplecoding.simlesuggestion.jpa.dept.dto.DeptDto;
@@ -103,4 +105,8 @@ public interface MapStruct {
 
     GallerySuggestedDto toDto(GallerySuggested gallerySuggested);
     GallerySuggested toEntity(GallerySuggestedDto gallerySuggestedDto);
+
+    //    TODO: 12) SearchAllBooks <-> SearchAllBooksDto
+    SearchAllBooksDto toDto(SearchAllBooks searchAllBooks);
+    SearchAllBooks toEntity(SearchAllBooksDto searchAllBooksDto);
 }
